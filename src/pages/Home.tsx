@@ -10,6 +10,7 @@ interface TitleState {
 
 const Home = ({ title }: TitleState) => {
   const countries = useRecoilValue(countryState);
+  console.log(countries);
   return (
     <>
       <h1>{title}</h1>
