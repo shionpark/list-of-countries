@@ -9,10 +9,9 @@ const CountryList = ({ text, id, category }: ICountry) => {
     const {
       currentTarget: { name },
     } = event;
-    console.log(`button name : ${name}`);
     setCountries((oldValue) => {
       const targetIndex = oldValue.findIndex((country) => country.id === id);
-      const newCountry = { text, id, category: name };
+      const newCountry = { text, id, category: name as any };
       return [...oldValue.slice(0, targetIndex), newCountry, ...oldValue.slice(targetIndex + 1)];
     });
   };
