@@ -1,2 +1,2 @@
 export { default as CountryForm } from './CountryForm';
-export { default as CountriesList } from './CountriesList';
+export { default as CountryList } from './CountryList';

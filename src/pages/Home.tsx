@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 
-import { CountryForm, CountriesList } from '@/components';
+import { CountryForm, CountryList } from '@/components';
 import { countryState } from '@/atoms';
 
 interface TitleState {
@@ -14,7 +14,9 @@ const Home = ({ title }: TitleState) => {
     <>
       <h1>{title}</h1>
       <CountryForm />
-      <CountriesList countries={countries} />
+      {countries.map((country) => (
+        <CountryList key={country.id} {...country} />
+      ))}
     </>
   );
 };
