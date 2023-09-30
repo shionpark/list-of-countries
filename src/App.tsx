@@ -1,9 +1,12 @@
-import React from "react";
+import React from 'react';
+import { CountriesList } from './components';
+
+const TITLE = '내가 가고 싶은 나라';
 
 function App() {
   return (
     <>
-      <h1>App</h1>
+      <CountriesList title={TITLE} />
     </>
   );
 }
