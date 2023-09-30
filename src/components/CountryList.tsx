@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSetRecoilState } from 'recoil';
-import { ICountry, countryState } from '@/atoms';
+import { Categories, ICountry, countryState } from '@/atoms';
 
 const CountryList = ({ text, id, category }: ICountry) => {
   const setCountries = useSetRecoilState(countryState);
@@ -15,22 +15,23 @@ const CountryList = ({ text, id, category }: ICountry) => {
       return [...oldValue.slice(0, targetIndex), newCountry, ...oldValue.slice(targetIndex + 1)];
     });
   };
+
   return (
     <>
       <div>
         <span>{text}</span>
-        {category !== 'WANNA_GO' && (
-          <button name="WANNA_GO" onClick={handleClick}>
+        {category !== Categories.WANNA_GO && (
+          <button name={Categories.WANNA_GO} onClick={handleClick}>
             Wanna Go
           </button>
         )}
-        {category !== 'HAVE_BEEN' && (
-          <button name="HAVE_BEEN" onClick={handleClick}>
+        {category !== Categories.HAVE_BEEN && (
+          <button name={Categories.HAVE_BEEN} onClick={handleClick}>
             Have been
           </button>
         )}
-        {category !== 'FAVS' && (
-          <button name="FAVS" onClick={handleClick}>
+        {category !== Categories.FAVS && (
+          <button name={Categories.FAVS} onClick={handleClick}>
             Favorite
           </button>
         )}

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { countryState } from '@/atoms';
+import { categoryState, countryState } from '@/atoms';
 import { INPUT_NAME } from '@/constants';
 
 interface IForm {
@@ -11,6 +11,7 @@ interface IForm {
 
 const CountryForm = () => {
   const setCountries = useSetRecoilState(countryState);
+  const category = useRecoilValue(categoryState);
 
   const {
     register,
@@ -21,10 +22,7 @@ const CountryForm = () => {
 
   const handleValid = ({ country }: IForm) => {
     console.log(country);
-    setCountries((oldValue) => [
-      { text: country, id: Date.now(), category: 'WANNA_GO' },
-      ...oldValue,
-    ]);
+    setCountries((oldValue) => [{ text: country, id: Date.now(), category }, ...oldValue]);
     setValue(INPUT_NAME, '');
   };
   return (
