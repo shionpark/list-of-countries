@@ -1,6 +1,6 @@
 import React from 'react';
 import { useCountryForm } from '@/hooks';
-import { INPUT_NAME } from '@/constants';
+import { ATOM_KEY } from '@/constants';
 
 const CountryForm = () => {
   const { handleSubmit, handleValid, register, errors } = useCountryForm();
@@ -9,7 +9,7 @@ const CountryForm = () => {
     <>
       <form onSubmit={handleSubmit(handleValid)}>
         <input
-          {...register(INPUT_NAME, { required: '필수 항목입니다.' })}
+          {...register(ATOM_KEY.COUNTRY, { required: '필수 항목입니다.' })}
           placeholder="Write a country"
         />
         <button>Add</button>

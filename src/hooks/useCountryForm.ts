@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { categoryState, countryState } from '@/atoms';
-import { INPUT_NAME } from '@/constants';
+import { ATOM_KEY } from '@/constants';
 
 interface IForm {
   country: string;
@@ -20,9 +20,8 @@ const useCountryForm = () => {
   } = useForm<IForm>();
 
   const handleValid = ({ country }: IForm) => {
-    console.log(country);
     setCountries((oldValue) => [{ text: country, id: Date.now(), category }, ...oldValue]);
-    setValue(INPUT_NAME, '');
+    setValue(ATOM_KEY.COUNTRY, '');
   };
 
   return {

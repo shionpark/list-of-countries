@@ -1,6 +1,6 @@
 import { atom, selectorFamily } from 'recoil';
 import { recoilPersist } from 'recoil-persist';
-import { INPUT_NAME } from '@/constants';
+import { ATOM_KEY } from '@/constants';
 
 export enum Categories {
   'WANNA_GO' = 'WANNA_GO',
@@ -15,23 +15,23 @@ export interface ICountry {
 }
 
 const { persistAtom } = recoilPersist({
-  key: 'localStorage',
+  key: ATOM_KEY.LOCAL_STORAGE,
   storage: localStorage,
 });
 
 export const countryState = atom<ICountry[]>({
-  key: INPUT_NAME,
+  key: ATOM_KEY.COUNTRY,
   default: [],
   effects_UNSTABLE: [persistAtom],
 });
 
 export const categoryState = atom<Categories>({
-  key: 'category',
+  key: ATOM_KEY.CATEGORY,
   default: Categories.WANNA_GO,
 });
 
 export const countrySelector = selectorFamily({
-  key: 'countrySelector',
+  key: ATOM_KEY.COUNTRY_SELECTOR,
   get:
     (params) =>
     ({ get }) =>
