@@ -1,4 +1,4 @@
-import { atom, selector } from 'recoil';
+import { atom, selector, selectorFamily } from 'recoil';
 import { INPUT_NAME } from '@/constants';
 
 export enum Categories {
@@ -23,14 +23,10 @@ export const categoryState = atom<Categories>({
   default: Categories.WANNA_GO,
 });
 
-export const countrySelector = selector({
+export const countrySelector = selectorFamily({
   key: 'countrySelector',
-  get: ({ get }) => {
-    const countries = get(countryState);
-    return [
-      countries.filter((country) => country.category === Categories.WANNA_GO),
-      countries.filter((country) => country.category === Categories.HAVE_BEEN),
-      countries.filter((country) => country.category === Categories.FAVS),
-    ];
-  },
+  get:
+    (params) =>
+    ({ get }) =>
+      get(countryState).filter((country) => country.category === params),
 });

@@ -1,12 +1,13 @@
 import React from 'react';
-import { Home } from '@/pages';
-
-const TITLE = '내가 가고 싶은 나라';
+import { CountryForm, CountryLists } from './components';
+import { CategoryList } from './constants';
 
 function App() {
   return (
     <>
-      <Home title={TITLE} />
+      <h1>Travel Lists</h1>
+      <CountryForm />
+      <CountryLists categoryIndex={Object.values(CategoryList)} />
     </>
   );
 }
