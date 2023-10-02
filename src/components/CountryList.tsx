@@ -1,41 +1,21 @@
 import React from 'react';
-import { useSetRecoilState } from 'recoil';
-import { Categories, ICountry, countryState } from '@/atoms';
+import { useRecoilValue } from 'recoil';
+import { countrySelector } from '@/atoms';
+import { CountryByCategory } from '@/components';
 
-const CountryList = ({ text, id, category }: ICountry) => {
-  const setCountries = useSetRecoilState(countryState);
+interface categoryNameProp {
+  categoryName: string;
+}
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const {
-      currentTarget: { name },
-    } = event;
-    setCountries((oldValue) => {
-      const targetIndex = oldValue.findIndex((country) => country.id === id);
-      const newCountry = { text, id, category: name as any };
-      return [...oldValue.slice(0, targetIndex), newCountry, ...oldValue.slice(targetIndex + 1)];
-    });
-  };
-
+const CountryList = ({ categoryName }: categoryNameProp) => {
+  const countrySelected = useRecoilValue(countrySelector(categoryName));
+  console.log(`categoryName: ${categoryName}`);
   return (
     <>
-      <div>
-        <span>{text}</span>
-        {category !== Categories.WANNA_GO && (
-          <button name={Categories.WANNA_GO} onClick={handleClick}>
-            Wanna Go
-          </button>
-        )}
-        {category !== Categories.HAVE_BEEN && (
-          <button name={Categories.HAVE_BEEN} onClick={handleClick}>
-            Have been
-          </button>
-        )}
-        {category !== Categories.FAVS && (
-          <button name={Categories.FAVS} onClick={handleClick}>
-            Favorite
-          </button>
-        )}
-      </div>
+      <h2>{categoryName}</h2>
+      {countrySelected.map((country) => (
+        <CountryByCategory key={country.id} {...country} />
+      ))}
     </>
   );
 };
