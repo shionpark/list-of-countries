@@ -3,11 +3,7 @@ import { useRecoilValue } from 'recoil';
 import { countrySelector } from '@/atoms';
 import { TravelListByCategory } from '@/components';
 
-interface categoryProp {
-  category: string;
-}
-
-const TravelList = ({ category }: categoryProp) => {
+const TravelList = ({ category }: { category: string }) => {
   const countriesByCategory = useRecoilValue(countrySelector(category));
   return (
     <>

@@ -1,8 +1,8 @@
 import React from 'react';
-import { useTravleForm } from '@/hooks';
+import { useCreateListForm } from '@/hooks';
 
 const TravelForm = () => {
-  const { handleSubmit, onValid, register, errors } = useTravleForm();
+  const { handleSubmit, onValid, register, errors } = useCreateListForm();
 
   return (
     <>

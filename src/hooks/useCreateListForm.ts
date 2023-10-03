@@ -7,7 +7,7 @@ interface IForm {
   country: string;
 }
 
-const useTravleForm = () => {
+const useCreateListForm = () => {
   const setCountries = useSetRecoilState(countryState);
   const category = useRecoilValue(categoryState);
 
@@ -31,4 +31,4 @@ const useTravleForm = () => {
   };
 };
 
-export default useTravleForm;
+export default useCreateListForm;

@@ -11,7 +11,7 @@ export enum Categories {
 export interface ICountry {
   text: string;
   id: number;
-  category: string;
+  category: Categories;
 }
 
 const { persistAtom } = recoilPersist({
