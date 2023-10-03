@@ -1,3 +1,3 @@
-export { default as CountryForm } from './CountryForm';
-export { default as CountryList } from './CountryList';
-export { default as CountryByCategory } from './CountryByCategory';
+export { default as TravelForm } from './TravelForm';
+export { default as TravelList } from './TravelList';
+export { default as TravelListByCategory } from './TravelListByCategory';

@@ -1,14 +1,14 @@
 import React from 'react';
-import { CountryForm, CountryList } from './components';
+import { TravelForm, TravelList } from './components';
 import { CategoryIndex } from './constants';
 
 function App() {
   return (
     <>
       <h1>Travel Lists</h1>
-      <CountryForm />
+      <TravelForm />
       {Object.values(CategoryIndex).map((category) => (
-        <CountryList key={category} categoryName={category} />
+        <TravelList key={category} category={category} />
       ))}
     </>
   );
